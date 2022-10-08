@@ -1,0 +1,12 @@
+@media(max-width: 1119px) {
+    .calculator__wrapper {
+        width: 768px - 36px * 2;
+        margin-top: 64px;
+    }
+
+    .calculator__outputs {
+        .heading_style_large {
+            color: #333333;
+        }
+    }
+}

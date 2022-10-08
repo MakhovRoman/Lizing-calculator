@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Lizing calculator</title>
+    <meta name="Description" content="Сайт для расчета стоимости лизинга автомобиля">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <main class="main">
+        <section class="calculator">
+            <div class="calculator__wrapper">
+                <div class="calculator__content">
+                    <h1 class="heading_style_large">
+                        Рассчитайте стоимость автомобиля в лизинг
+                    </h1>
+                    <form name="lizing" class="calculator__form" id="lizing_form" onsubmit="return false;">
+                        <div class="form__inputs">
+                            <div class="inputs__item">
+                                <label for="price">Стоимость автомобиля</label>
+                                <div class="range-wrapper">
+                                    <input type="range" class="input_type_range" id="price" min="1000000" max="6000000" step="1000" value="3000000" name="car_coast">
+                                    <div class="progressBar progressBar_price"></div>
+                                </div>
+                                <div class="inputs__subitem subitem-price">
+                                    <input type="text" class="range-output heading_style_medium" id="output_price" >
+                                    <span class="unit heading_style_medium">₽</span>
+                                </div>
+                            </div>
+                            <div class="inputs__item">
+                                <label for="payment">Первоначальный взнос</label>
+                                <div class="range-wrapper">
+                                    <input type="range" class="input_type_range" id="payment" min="10" max="60" value="30" name="initial_payment_percent">
+                                    <div class="progressBar progressBar_payment"></div>
+                                </div>
+                                <div class="inputs__subitem subitem-payment">
+                                    <span class="payment__percentage heading_style_medium " data-name="initial_payment"></span>
+                                    <div class="output-wrapper">
+                                        <input type="text" class="range-output" id="output_payment">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="inputs__item">
+                                <label for="term">Срок лизинга</label>
+                                <div class="range-wrapper">
+                                    <input type="range" class="input_type_range" id="term" min="1" max="60" step="1" value="12" name="lease_term">
+                                    <div class="progressBar progressBar_term"></div>
+                                </div>
+                                <div class="inputs__subitem subitem-term">
+                                    <input type="text" class="range-output heading_style_medium" id="output_term">
+                                    <span class="unit heading_style_medium">мес.</span>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="calculator__outputs">
+                            <div class="calculator__credit-total outputs__item">
+                                <span class="outputs__label">Сумма договора лизинга</span>
+                                <h1 class="heading_style_large outputs__value">
+                                    <span class="credit-total__content" data-name="total_sum"></span>
+                                </h1>
+                            </div>
+                            <div class="calculator__credit-regular-payment outputs__item">
+                                <span class="outputs__label">Ежемесячный платеж от</span>
+                                <h1 class="heading_style_large outputs__value">
+                                    <span class="credit-regular-payment__content" data-name="mounthly_payment_form"></span>
+                                </h1>
+                            </div>
+                            <div class="outputs__item outputs__submit">
+                                <input type="submit" class="" id="form__submit" value="Оставить заявку">
+                                <label for="form__submit" class="loader"><img src="/images/loader.svg" alt=""></label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="js/index.js" type="module"></script>
+</body>
+</html>

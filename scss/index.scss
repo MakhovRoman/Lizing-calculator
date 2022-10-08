@@ -1,0 +1,320 @@
+@import "fonts.scss";
+
+:root{
+    --heading-font: 54px;
+}
+
+$heading--line-height: 90%;
+$label--font: 16px;
+$label--line-heigth: 20px;
+$inputText--font: 30px;
+$inputText--line-height: 36px;
+$inputColor: #575757;
+
+%flex--row {
+    display: flex;
+    justify-content: space-between;
+}
+
+%font--Nekst {
+    font-family: "Nekst";
+    font-weight: 900;
+}
+
+@mixin itemsWidth() {
+    width: 427px * 100% / (1440px - 47px * 2);
+}
+
+@mixin progressBarWidth($a, $b) {
+    width: $b * 100% / $a;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    margin: 0;
+    display: flex;
+}
+
+.calculator__wrapper {
+    width: (1440px - 47px * 2) / 1440px * 100%;
+    margin: 213px auto 0 auto;
+}
+
+
+.heading_style_large {
+    @extend %font--Nekst;
+    width: 50%;
+    color: #111111;
+    font-size: var(--heading-font);
+    line-height: $heading--line-height;
+}
+
+.heading_style_large:not(.outputs__value) {
+    margin-bottom: 32px;
+}
+
+.calculator__outputs {
+    .heading_style_large {
+        color: $inputColor;
+        margin: 0;
+    }
+}
+
+.heading_style_medium {
+    @extend %font--Nekst;
+    font-size: $inputText--font;
+    line-height: $inputText--line-height;
+    color: $inputColor;
+}
+
+.form__inputs {
+    @extend %flex--row;
+    margin-bottom: 44px;
+}
+
+.inputs__item {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    @include itemsWidth();
+
+    label {
+        font-family: "Gilroy";
+        margin-bottom: 20px;
+    }
+
+    &.item_disabled {
+        filter: opacity(40%);
+    }
+
+    .range-wrapper {
+        bottom: 0px;
+        width: 379px / 427px * 100%;
+        height: 2px;
+        outline: none;
+        border: none;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        position: absolute;
+        margin: 0;
+        z-index: 5;
+    }
+
+    input[type="range"] {
+        -webkit-appearance: none;
+        background-color: #E1E1E1;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+
+        &::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #FF9514;
+            cursor: pointer;
+        }
+
+        &::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #FF9514;
+            cursor: pointer;
+        }
+    }
+
+    .progressBar {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background-color: #FF9514;
+        height: 100%;
+
+        &.progressBar_price {
+            @include progressBarWidth(5, 2);
+        }
+
+        &.progressBar_payment {
+            @include progressBarWidth(5, 2);
+        }
+
+        &.progressBar_term {
+            @include progressBarWidth(59, 12);
+        }
+
+    }
+
+    .range-output {
+        width: 100%;
+        height: 68px;
+        border: none;
+        outline: none;
+        border-radius: 16px;
+        background-color: #F3F3F4;
+        padding:16px 24px;
+        box-sizing: border-box;
+
+        &:focus {
+            background-color: #FFFFFF;
+            border: 2px solid #F3F3F4
+        }
+
+        &.input_disabled {
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        }
+    }
+
+    .inputs__subitem {
+        @extend %flex--row;
+        position: relative;
+        border-radius: 16px;
+        background-color: #F3F3F4;
+        align-items: center;
+        box-sizing: border-box;
+        height: 68px;
+        padding: 0 7px 0 24px;
+
+        &.input_disabled {
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        }
+
+        .output-wrapper {
+            width: 70px;
+            height: 100%;
+            display: flex;
+            position: relative;
+            align-items: center;
+
+            #output_payment {
+                height: fit-content;
+                border-radius: 16px;
+                background-color: #EBEBEC;
+                font-size: 20px;
+                line-height: 24px;
+                padding: 15px;
+                box-sizing: border-box;
+                @extend %font--Nekst;
+                color: $inputColor;
+
+                &:focus {
+                    background-color: #FFFFFF;
+                    border: 2px solid #F3F3F4
+                }
+            }
+
+            label {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                right: 13px;
+                @extend %font--Nekst;
+                color: $inputColor;
+                font-size: 20px;
+                line-height: 24px;
+            }
+        }
+
+        .unit {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 24px;
+        }
+    }
+
+    .subitem-price, .subitem-term {
+        padding: 0;
+    }
+}
+
+.calculator__outputs {
+    @extend %flex--row;
+}
+
+.outputs__item {
+    @include itemsWidth();
+
+    .outputs__label {
+        font-family: 'Gilroy';
+        font-size: 16px;
+        line-height: 150%;
+    }
+}
+
+.outputs__submit {
+    position: relative;
+}
+    #form__submit {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        outline: none;
+        padding: 0;
+        color: white;
+        background-color: #FF9514;
+        @extend %font--Nekst;
+        font-size: 30px;
+        line-height: 36px;
+        border-radius: 40px;
+        cursor: pointer;
+        user-select: none;
+
+        &:hover {
+            background-color: #111111;
+        }
+
+        &:active {
+            background-color: #575757;
+        }
+
+        &:disabled {
+            filter: opacity(40%);
+        }
+
+        & + .loader {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 80%;
+            width: fit-content;
+            display: none;
+
+            & img {
+                height: 100%;
+                width: auto;
+            }
+        }
+
+        &.onload {
+            color: transparent;
+        }
+
+        &.onload + .loader {
+            display: block;
+
+            & img {
+                animation: rotate 1s infinite linear;
+            }
+        }
+    }
+
+@keyframes rotate {
+    0%   {transform: rotate(0);}
+    100% {transform: rotate(360deg);}
+}
+
+
+@import "before_1440px.scss";
+@import "before_1120px.scss";
+@import "before_768px.scss";

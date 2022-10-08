@@ -1,0 +1,69 @@
+@media(max-width: 767px) {
+    :root {
+        --heading-font: 34px;
+    }
+
+    body {
+        min-width: 320px;
+    }
+
+    .calculator__wrapper {
+        width: 320px;
+    }
+
+    .calculator__content {
+        padding: 0 20px 0 21px;
+    }
+
+    .form__inputs {
+        justify-content: unset;
+    }
+
+    .inputs__item {
+        .range-output {
+            height: 60px;
+        }
+
+        label {
+            margin-bottom: 8px;
+        }
+    }
+
+    .inputs__item + .inputs__item {
+        margin-top: 16px;
+    }
+
+    .calculator__outputs {
+        display: flex;
+        flex-direction: column;
+        grid-row-gap: unset;
+
+        .heading_style_large {
+            font-size: 22px;
+            line-height: 20px;
+        }
+    }
+
+    .calculator__credit-regular-payment {
+        margin-top: 29px;
+        margin-bottom: 32px;
+    }
+
+    .outputs__item {
+        .outputs__label {
+            font-size: 14px;
+            line-height: 136%;
+            margin-bottom: 2px;
+        }
+    }
+
+    .outputs__submit {
+        height: 60px;
+        width: 100%;
+    }
+
+    #form__submit {
+        font-size: 22px;
+        line-height: 20px;
+    }
+}
