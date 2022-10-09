@@ -13,7 +13,8 @@ class InputRange {
         this.range.setAttribute('value', +e.target.value);
         this.range.value = +e.target.value;
         this.output.setAttribute('value', +e.target.value);
-        this.output.value = intlNumberFormat(+e.target.value);
+
+        this.output.value = +e.target.value;
 
         checkTotalPayment(e);
         checkRegularPayment();
@@ -34,6 +35,8 @@ class InputRange {
         });
 
         this.output.addEventListener('input', (e) => {
+            e.target.value = e.target.value.replace(/\D/, "");
+
             if (e.target.value > this.min && e.target.value < this.max) {
                 this.listenerOutput(e);
             }
